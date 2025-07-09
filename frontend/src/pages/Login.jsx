@@ -1,0 +1,28 @@
+import Header from '../components/Header'
+import FormAuth from '../components/FormAuth'
+
+export default function Login() {
+  return (
+    <div className="min-h-screen w-full bg-white">
+      <Header />
+      <div className="flex min-h-full w-full flex-col justify-center py-32">
+        <div className="mx-auto w-full max-w-md">
+          <div className="text-center">
+            <h2 className="text-3xl font-semibold text-gray-900">
+              Welcome back
+            </h2>
+            <p className="mt-2 text-sm text-gray-600">
+              Sign in to your account to continue
+            </p>
+          </div>
+          <div className="mt-8 bg-white rounded-2xl shadow-sm ring-1 ring-gray-200 p-8">
+            <FormAuth currView="sign_in" />
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+
+
