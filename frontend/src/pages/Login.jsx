@@ -3,9 +3,9 @@ import FormAuth from '../components/FormAuth'
 
 export default function Login() {
   return (
-    <div className="min-h-screen w-full bg-white">
+    <div className="min-h-screen bg-white">
       <Header />
-      <div className="flex min-h-full w-full flex-col justify-center py-32">
+      <div className="flex min-h-full flex-col justify-center py-32">
         <div className="mx-auto w-full max-w-md">
           <div className="text-center">
             <h2 className="text-3xl font-semibold text-gray-900">

@@ -1,0 +1,95 @@
+SAMSUNG TV TROUBLESHOOTING GUIDE
+================================
+
+POWER ISSUES
+------------
+Problem: TV won't turn on
+Solutions:
+1. Check power cable connection
+2. Try different power outlet
+3. Press power button on TV (not remote)
+4. Unplug for 30 seconds, then reconnect
+5. Check if standby light is on
+
+Problem: TV turns off randomly
+Solutions:
+1. Check Sleep Timer settings
+2. Update TV software
+3. Check for overheating (ensure proper ventilation)
+4. Reset Smart Hub
+
+PICTURE QUALITY ISSUES
+----------------------
+Problem: No picture/black screen
+Solutions:
+1. Check input source selection
+2. Verify cable connections (HDMI, etc.)
+3. Try different HDMI port
+4. Reset picture settings to default
+5. Perform soft reset (hold power 10 seconds)
+
+Problem: Picture too dark/bright
+Solutions:
+1. Adjust Brightness in Picture Settings
+2. Turn off Eco Solution features
+3. Change Picture Mode (Standard, Movie, Dynamic)
+4. Disable Local Dimming if too dark
+
+Problem: Blurry or pixelated picture
+Solutions:
+1. Check source resolution settings
+2. Ensure strong signal strength
+3. Update TV firmware
+4. Adjust Sharpness settings
+5. Enable/disable Motion Smoothing
+
+AUDIO ISSUES
+------------
+Problem: No sound
+Solutions:
+1. Check volume level and mute status
+2. Verify audio output settings
+3. Check external speaker connections
+4. Reset sound settings to default
+5. Update TV software
+
+Problem: Audio out of sync
+Solutions:
+1. Adjust Audio Delay in Sound Settings
+2. Change Digital Audio Output format
+3. Restart connected devices
+4. Update TV firmware
+
+CONNECTIVITY ISSUES
+-------------------
+Problem: Wi-Fi connection problems
+Solutions:
+1. Reset Network Settings
+2. Move closer to router
+3. Check router password
+4. Restart router and TV
+5. Use Ethernet cable if possible
+
+Problem: Apps not working
+Solutions:
+1. Close and reopen app
+2. Clear app cache
+3. Update app
+4. Reset Smart Hub
+5. Check internet connection
+
+REMOTE CONTROL ISSUES
+---------------------
+Problem: Remote not responding
+Solutions:
+1. Replace batteries
+2. Clean battery contacts
+3. Point remote directly at TV sensor
+4. Remove obstacles between remote and TV
+5. Pair remote again (hold Return + Play/Pause)
+
+RESET PROCEDURES
+----------------
+Soft Reset: Hold power button 10 seconds
+Factory Reset: Settings > General > Reset > Factory Data Reset
+Smart Hub Reset: Settings > Support > Device Care > Self Diagnosis > Reset Smart Hub
