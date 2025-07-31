@@ -7,9 +7,6 @@ import cors from 'cors';
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(express.json());
-app.use(cookieParser());
-
 const corsOptions = {
   origin: [
     'http://localhost:5173', 
@@ -18,10 +15,16 @@ const corsOptions = {
   ], 
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'Cookie'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
   optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
+
+app.set('trust proxy', 1);
+app.use(express.json());
+app.use(cookieParser());
+
+
 
 app.use('/api/chat', authMiddleware, router);
 
