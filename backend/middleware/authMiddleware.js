@@ -5,6 +5,8 @@ config();
 
 const authMiddleware = (req, res, next) => {
   try {
+    //sb-elbdnefgkagyojjiahtv-auth-token
+    console.log("req.cookies", req.cookies)
     const token = req.cookies['sb-elbdnefgkagyojjiahtv-auth-token'];
     const parsedToken = JSON.parse(token)
     if (!token) {
