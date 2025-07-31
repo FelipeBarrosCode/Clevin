@@ -216,8 +216,8 @@ it('should validate email format', () => {
 
 ## 🌐 Live Links
 
-- **Frontend**: [Your deployed frontend URL]
-- **Backend**: [Your deployed backend URL]
+- **Frontend**: [https://clevin.vercel.app/]
+- **Backend**: [https://clevin-1.onrender.com]
 
 ## 📡 API Routes
 
