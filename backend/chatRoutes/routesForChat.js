@@ -79,7 +79,7 @@ Always format your responses using proper markdown. Use headers, lists, and emph
     //ft:gpt-4.1-nano-2025-04-14:personal:customerdata:BkFPKzdQ
     //gpt-4.1-2025-04-14
     const completion = await openai.chat.completions.create({
-      model: "gpt-4.1-2025-04-14",
+      model: "ft:gpt-4.1-nano-2025-04-14:personal:customerdata:BkFPKzdQ",
       messages: messages,
       temperature: 0.7
     });
@@ -198,7 +198,7 @@ router.get('/get-chat', async (req, res) => {
   }
 });
 
-router.post('/upload-to-vector', upload.array('files', 5), async (req, res) => {
+router.put('/upload-to-vector', upload.array('files', 5), async (req, res) => {
   try {
     if (!req.files || req.files.length === 0) {
       return res.status(400).json({ error: 'No files uploaded' });
