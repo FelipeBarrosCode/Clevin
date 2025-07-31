@@ -8,6 +8,8 @@ export default function ManageFiles() {
 
   useEffect(() => {
     const fetchFiles = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      const accessToken = session?.access_token;
       try {
         const response = await axios.get(`${import.meta.env.VITE_BACKEND_DOMAIN}/api/chat/get-files`, {
           headers: {

@@ -12,10 +12,10 @@ export default function Hero() {
             accurate, and personalized responses 24/7.
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
-            <a href="/demo" className="bg-black text-white px-8 py-3 rounded-full text-lg hover:bg-gray-800">
+            <a href="/login" className="bg-black text-white px-8 py-3 rounded-full text-lg hover:bg-gray-800">
               Try Demo
             </a>
-            <a href="/learn-more" className="text-lg text-gray-600 hover:text-gray-900">
+            <a href="/login" className="text-lg text-gray-600 hover:text-gray-900">
               Learn more <span aria-hidden="true">→</span>
             </a>
           </div>

@@ -40,7 +40,7 @@ export default function Landing() {
                 you provide, the more personalized the experience becomes.
               </p>
               <div className="mt-8">
-                <a href="/upload" className="inline-flex items-center rounded-full bg-black px-6 py-3 text-sm text-white hover:bg-gray-800">
+                <a href="/login" className="inline-flex items-center rounded-full bg-black px-6 py-3 text-sm text-white hover:bg-gray-800">
                   Upload Your Guidelines
                   <span className="ml-2">→</span>
                 </a>
