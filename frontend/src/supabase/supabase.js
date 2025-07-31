@@ -7,7 +7,7 @@ const customStorageObject = {
       return cookie ? cookie.split('=')[1] : null
     },
     setItem: (key, value) => {
-      document.cookie = `${key}=${value}; path=/; secure; samesite=strict; max-age=31536000`
+      document.cookie = `${key}=${value}; path=/; secure; samesite=none; max-age=31536000`
     },
     removeItem: (key) => {
       document.cookie = `${key}=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT`
