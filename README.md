@@ -256,13 +256,7 @@ it('should validate email format', () => {
 - **Storage**: File upload and download
 - **Documentation**: [Supabase Docs](https://supabase.com/docs)
 
-## 📸 Screenshots
 
-[Add screenshots of your application here]
-
-## 🎥 Demo Video
-
-[Add a link to your demo video here]
 
 
 
