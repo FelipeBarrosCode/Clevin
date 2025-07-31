@@ -33,7 +33,7 @@ export default function UploadFiles() {
             [file.name]: { ...prev[file.name], status: 'uploading' }
           }))
 
-          const response = await axios.post(
+          const response = await axios.put(
             `${import.meta.env.VITE_BACKEND_DOMAIN}/api/chat/upload-to-vector`,
             formData,
             {
