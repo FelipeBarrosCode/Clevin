@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import BubbleChat from './BubbleChat'
-
+import supabase from '../supabase/supabase'
 export default function Chat() {
   const [messages, setMessages] = useState([])
   const [newMessage, setNewMessage] = useState('')
@@ -9,8 +9,12 @@ export default function Chat() {
 
   const fetchChatHistory = async () => {
     try {
+      const { data: { session } } = await supabase.auth.getSession();
+      const accessToken = session?.access_token;
       const response = await axios.get(`${import.meta.env.VITE_BACKEND_DOMAIN}/api/chat/get-chat`, {
-        withCredentials: true
+        headers: {
+          Authorization: `Bearer ${accessToken}`
+        }
       })
       
       if (response.data.chatHistory && response.data.chatHistory.length > 0) {
@@ -24,8 +28,12 @@ export default function Chat() {
 
   const handleDeleteChat = async () => {
     try {
+      const { data: { session } } = await supabase.auth.getSession();
+      const accessToken = session?.access_token;
       await axios.delete(`${import.meta.env.VITE_BACKEND_DOMAIN}/api/chat/delete-chat`, {
-        withCredentials: true
+        headers: {
+          Authorization: `Bearer ${accessToken}`
+        }
       })
       
       setMessages([])
@@ -69,11 +77,15 @@ export default function Chat() {
     setIsLoading(true)
 
     try {
+      const { data: { session } } = await supabase.auth.getSession();
+      const accessToken = session?.access_token;
       const response = await axios.post(`${import.meta.env.VITE_BACKEND_DOMAIN}/api/chat/message`, {
         message: newMessage,
         chatHistory: messages
       }, {
-        withCredentials: true
+        headers: {
+          Authorization: `Bearer ${accessToken}`
+        }
       })
 
       const aiMessage = {

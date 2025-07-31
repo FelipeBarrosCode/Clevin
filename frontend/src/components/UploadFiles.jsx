@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
-
+import supabase from '../supabase/supabase'
 export default function UploadFiles() {
   const [selectedFiles, setSelectedFiles] = useState([])
   const [uploadStatus, setUploadStatus] = useState({})
@@ -32,13 +32,16 @@ export default function UploadFiles() {
             ...prev,
             [file.name]: { ...prev[file.name], status: 'uploading' }
           }))
+          const { data: { session } } = await supabase.auth.getSession();
+          const accessToken = session?.access_token;
 
           const response = await axios.put(
             `${import.meta.env.VITE_BACKEND_DOMAIN}/api/chat/upload-to-vector`,
             formData,
             {
               headers: {
-                'Content-Type': 'multipart/form-data'
+                'Content-Type': 'multipart/form-data',
+                Authorization: `Bearer ${accessToken}`
               },
               withCredentials: true,
               onUploadProgress: (progressEvent) => {

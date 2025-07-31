@@ -5,31 +5,52 @@ config();
 
 const authMiddleware = (req, res, next) => {
   try {
-    //sb-elbdnefgkagyojjiahtv-auth-token
-    console.log("req.cookies", req.cookies)
-    const token = req.cookies['sb-elbdnefgkagyojjiahtv-auth-token'];
-    const parsedToken = JSON.parse(token)
+    // Get the Authorization header
+    const authHeader = req.headers.authorization;
+    console.log("Authorization header:", authHeader);
+    
+    if (!authHeader) {
+      return res.status(401).json({ error: 'No authorization header provided' });
+    }
+
+    // Check if it starts with 'Bearer '
+    if (!authHeader.startsWith('Bearer ')) {
+      return res.status(401).json({ error: 'Invalid authorization format. Use Bearer token' });
+    }
+
+    // Extract the token (remove 'Bearer ' prefix)
+    const token = authHeader.substring(7);
+    
     if (!token) {
       return res.status(401).json({ error: 'No token provided' });
     }
-    console.log("parsedToken", parsedToken)
-    const decoded = jwt.verify(parsedToken.access_token, process.env.JWT_SECRET);
+
+    console.log("Extracted token:", token.substring(0, 50) + "...");
+
+    // For Supabase JWT tokens, they might be raw JWT or wrapped in JSON
+    let tokenToVerify = token;
+    
+    // Verify the JWT token
+    const decoded = jwt.verify(tokenToVerify, process.env.JWT_SECRET);
+    console.log("Token decoded successfully for user:", decoded.sub);
+    
     if (!req.locals) {
       req.locals = {};
     }
-    
-    req.locals.user = decoded
-
+    console.log("decoded", decoded);
+    req.locals.user = decoded;
     next();
+    
   } catch (error) {
+    console.error('Auth middleware error:', error);
+    
     if (error instanceof jwt.TokenExpiredError) {
       return res.status(401).json({ error: 'Token expired' });
     }
     if (error instanceof jwt.JsonWebTokenError) {
-      console.log(error)
       return res.status(401).json({ error: 'Invalid token' });
     }
-    console.error('Auth middleware error:', error);
+    
     return res.status(500).json({ error: 'Internal server error' });
   }
 };

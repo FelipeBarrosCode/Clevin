@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-
+import supabase from '../supabase/supabase'
 export default function ManageFiles() {
   const [files, setFiles] = useState([])
 
@@ -10,7 +10,9 @@ export default function ManageFiles() {
     const fetchFiles = async () => {
       try {
         const response = await axios.get(`${import.meta.env.VITE_BACKEND_DOMAIN}/api/chat/get-files`, {
-          withCredentials: true
+          headers: {
+            Authorization: `Bearer ${accessToken}`
+          }
         })
         console.log("response.data.data", response.data.data)
         
@@ -100,9 +102,13 @@ export default function ManageFiles() {
     )
   }
 
-  const deleteFile = (id) => {
+  const deleteFile = async (id) => {
+    const { data: { session } } = await supabase.auth.getSession();
+    const accessToken = session?.access_token;
     axios.delete(`${import.meta.env.VITE_BACKEND_DOMAIN}/api/chat/delete-file/${id}`, {
-      withCredentials: true,
+      headers: {
+        Authorization: `Bearer ${accessToken}`
+      }
     })
 
     setFiles(prev => prev.filter(file => file.id !== id))
@@ -110,9 +116,13 @@ export default function ManageFiles() {
 
   const downloadFile = async (file) => {
     try {
+      const { data: { session } } = await supabase.auth.getSession();
+      const accessToken = session?.access_token;
       const response = await axios.get(`${import.meta.env.VITE_BACKEND_DOMAIN}/api/chat/download-file/${file.id}`, {
-        withCredentials: true,
-        responseType: 'blob'
+        responseType: 'blob',
+        headers: {
+          Authorization: `Bearer ${accessToken}`
+        }
       });
 
       const blob = new Blob([response.data], { type: file.mime_type || 'application/octet-stream' });

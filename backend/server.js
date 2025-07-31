@@ -1,6 +1,6 @@
 import express from 'express';
 import { default as router } from './chatRoutes/routesForChat.js';
-import cookieParser from 'cookie-parser';
+
 import authMiddleware from './middleware/authMiddleware.js';
 import cors from 'cors';
 
@@ -23,7 +23,6 @@ app.use(cors(corsOptions));
 
 
 app.use(express.json());
-app.use(cookieParser());
 
 
 
