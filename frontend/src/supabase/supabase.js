@@ -7,11 +7,21 @@ const customStorageObject = {
       return cookie ? cookie.split('=')[1] : null
     },
     setItem: (key, value) => {
-      document.cookie = `${key}=${value}; path=/; secure; samesite=none; max-age=31536000`
+      const stringValue = typeof value === 'string' ? value : JSON.stringify(value)
+      document.cookie = `${key}=${encodeURIComponent(stringValue)}; path=/; secure; samesite=none; max-age=31536000`
     },
-    removeItem: (key) => {
-      document.cookie = `${key}=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT`
-    }
+    getItem: (key) => {
+      const cookies = document.cookie.split(';')
+      const cookie = cookies.find(c => c.trim().startsWith(`${key}=`))
+      if (!cookie) return null
+      const value = cookie.split('=')[1]
+      try {
+        return JSON.parse(decodeURIComponent(value))
+      } catch {
+        return decodeURIComponent(value)
+      }
+    },
+    
   } 
 
 const supabase = createClient(
