@@ -11,12 +11,15 @@ app.use(express.json());
 app.use(cookieParser());
 
 const corsOptions = {
-  origin: ['http://localhost:5173', 'https://clevin.vercel.app','https://clevin.vercel.app/dashboard'], 
+  origin: [
+    'http://localhost:5173', 
+    'http://localhost:5174',
+    'https://clevin.vercel.app'
+  ], 
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'Cookie'],
   optionsSuccessStatus: 200,
-  
 };
 app.use(cors(corsOptions));
 
